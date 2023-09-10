@@ -3,7 +3,7 @@ import React from 'react';
 
 export const Post = ({ id, description, writer, title }: PostType) => {
 	return (
-		<div className="p-4 border-slate-700 border rounded-lg dark:bg-black">
+		<div className="p-4 border-slate-700 border rounded-lg">
 			<h2 className="text-xl font-bold">
 				{title}
 			</h2>
