@@ -1,3 +1,4 @@
+import { PaginationControls } from '@/components/PaginationControls';
 import { Post } from '@/components/Post';
 import { useFetch } from '@/hooks/useFetch';
 import { usePagination } from '@/hooks/usePagination';
@@ -33,41 +34,15 @@ const Posts = () => {
 		<div className="flex flex-col gap-4 p-4">
 			<h1 className="text-2xl font-bold">Posts</h1>
 			{renderPosts()}
-			<div className="flex gap-4">
-				<button
-					className="bg-slate-700 text-white p-2 rounded-lg disabled:opacity-50"
-					onClick={prevPage}
-					disabled={page <= 1}>
-					Previous
-				</button>
-				<button
-					className="bg-slate-700 text-white p-2 rounded-lg disabled:opacity-50"
-					onClick={nextPage}
-					disabled={page * limit >= totalPosts}>
-					Next
-				</button>
-			</div>
-			<label htmlFor="posts-limit-input">
-				<span>Posts per page:</span>
-				<select
-					value={limit}
-					onChange={e => {
-						setLimit(Number(e.target.value));
-					}}>
-					<option value={10} disabled={page * 10 > totalPosts}>
-						10
-					</option>
-					<option value={15} disabled={page * 15 > totalPosts}>
-						15
-					</option>
-					<option value={20} disabled={page * 20 > totalPosts}>
-						20
-					</option>
-					<option value={25} disabled={page * 25 > totalPosts}>
-						25
-					</option>
-				</select>
-			</label>
+			<PaginationControls
+				page={page}
+				limit={limit}
+				limits={[10, 15, 20, 25]}
+				onNextPage={nextPage}
+				onPrevPage={prevPage}
+				onLimitChange={setLimit}
+				totalPosts={totalPosts}
+			/>
 		</div>
 	);
 };
