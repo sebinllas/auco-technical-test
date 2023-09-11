@@ -1,9 +1,16 @@
 import { Post as PostType } from '@/types/Post';
+import Link from 'next/link';
 import React from 'react';
 
-export const Post = ({ id, description, writer, title }: PostType) => {
+interface PostProps extends PostType {
+	as?: string | typeof Link | React.FC;
+}
+
+export const Post = ({ id, description, writer, title, as: Wrapper = Link }: PostProps) => {
 	return (
-		<div className="p-4 border-slate-300 dark:border-slate-700 border rounded-lg bg-gray-500/10">
+		<Wrapper
+			href={`/posts/${id}`}
+			className="p-4 border-slate-300 dark:border-slate-700 border rounded-lg bg-gray-500/10">
 			<h2 className="text-xl font-bold">
 				{title}
 			</h2>
@@ -13,6 +20,6 @@ export const Post = ({ id, description, writer, title }: PostType) => {
 			<p>
 				{description}
 			</p>
-		</div>
+		</Wrapper>
 	);
 };

@@ -7,6 +7,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return( 
     <ThemeProvider>
       <Navbar/>
-      <Component {...pageProps} />
+      <main className='sm:px-16 sm:py-6 p-4'>
+        <Component {...pageProps}/>
+      </main>
     </ThemeProvider>)
 }

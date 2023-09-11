@@ -1,3 +1,4 @@
+import { Loading } from '@/components/Loading';
 import { PaginationControls } from '@/components/PaginationControls';
 import { Post } from '@/components/Post';
 import { useFetch } from '@/hooks/useFetch';
@@ -16,7 +17,7 @@ const Posts = () => {
 		: Number.MAX_VALUE;
 
 	const renderPosts = () => {
-		if (loading) return <p>Loading...</p>;
+		if (loading) return <Loading />;
 		if (error) return <p>Oh no something went wrong!</p>;
 		if (!data) return <p>No data</p>;
 		return data.map(postResponse =>
@@ -31,7 +32,7 @@ const Posts = () => {
 	};
 
 	return (
-		<div className="flex flex-col gap-4 p-4">
+		<div className="flex flex-col gap-4">
 			<h1 className="text-2xl font-bold">Posts</h1>
 			{renderPosts()}
 			<PaginationControls

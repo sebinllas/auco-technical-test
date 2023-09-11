@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 
 export const useFetch = <T>(url: string) => {
@@ -8,15 +7,14 @@ export const useFetch = <T>(url: string) => {
   const headers = useRef<Headers>();
   useEffect(() => {
       setLoading(true)
+      setError(false);
       fetch(url).then(async (res) => {
         headers.current = res.headers;
         if(!res.ok) throw new Error('Error in fetch');
         const data = await res.json();
         setData(data);
-        setLoading(false);
-      }).catch((err) => {
+      }).catch(() => {
           setError(true);
-          setLoading(false);
       }).finally(() => {
           setLoading(false);
       })
