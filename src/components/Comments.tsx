@@ -3,6 +3,7 @@ import { CommentResponse } from '@/types/CommentResponse';
 import React from 'react';
 import { Post } from '@/components/Post';
 import { FetchResult } from '@/components/FetchResult';
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const Comments = ({ id }: { id: number }) => {

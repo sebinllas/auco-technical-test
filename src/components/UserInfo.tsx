@@ -1,15 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export interface UserInfoProps {
+	id: number;
 	name: string;
 	userName: string;
 	avatar: string;
 }
 
-export const UserInfo = ({ name, userName, avatar }: UserInfoProps) => {
+export const UserInfo = ({ id, name, userName, avatar }: UserInfoProps) => {
 	return (
-		<div className="flex gap-3 items-center text-gray-600 dark:text-gray-400">
+		<Link href={`/users/${id}`} className="flex gap-3 items-center text-gray-600 dark:text-gray-400">
 			<Image
 				src={avatar}
 				width={40}
@@ -26,6 +28,6 @@ export const UserInfo = ({ name, userName, avatar }: UserInfoProps) => {
 					@{userName}
 				</p>
 			</div>
-		</div>
+		</Link>
 	);
 };

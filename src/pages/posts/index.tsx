@@ -20,25 +20,28 @@ const Posts = () => {
 		<div className="flex flex-col gap-4">
 			<h1 className="text-2xl font-bold">Posts</h1>
 			<FetchResult error={error} loading={loading} data={data}>
-				{data?.map(postResponse =>
-					<Post
-						key={postResponse.id}
-						id={postResponse.id}
-						title={postResponse.title}
-						description={postResponse.body}
-						writer={postResponse.user.name}
+				<>
+					{data?.map(postResponse =>
+						<Post
+							key={postResponse.id}
+							id={postResponse.id}
+							title={postResponse.title}
+							description={postResponse.body}
+							writer={postResponse.user.name}
+						/>
+					)}
+					<PaginationControls
+						page={page}
+						limit={limit}
+						limits={[10, 15, 20, 25]}
+						onNextPage={nextPage}
+						onPrevPage={prevPage}
+						onLimitChange={setLimit}
+						totalPosts={totalPosts}
 					/>
-				)}
+				</>
 			</FetchResult>
-			<PaginationControls
-				page={page}
-				limit={limit}
-				limits={[10, 15, 20, 25]}
-				onNextPage={nextPage}
-				onPrevPage={prevPage}
-				onLimitChange={setLimit}
-				totalPosts={totalPosts}
-			/>
+
 		</div>
 	);
 };

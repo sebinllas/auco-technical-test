@@ -2,8 +2,8 @@ import { PostDetails } from '@/components/PostDetails';
 import { useRouter } from 'next/router';
 
 const PostDetailsPage = () => {
-	const { id } = useRouter().query;
-	return id ? <PostDetails id={Number(id)} /> : null;
+	const { postId } = useRouter().query;
+	return postId ? <PostDetails id={Number(postId)} /> : null;
 };
 
 export default PostDetailsPage;

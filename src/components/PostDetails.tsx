@@ -6,6 +6,7 @@ import { Comments } from '@/components/Comments';
 import { FetchResult } from '@/components/FetchResult';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const AVATARS_API_URL = process.env.NEXT_PUBLIC_AVATARS_API_URL;
 
 export const PostDetails = ({ id }: { id: number }) => {
 	const { data, loading, error } = useFetch<PostResponse>(
@@ -22,10 +23,11 @@ export const PostDetails = ({ id }: { id: number }) => {
 						{data.body}
 					</p>
 					<UserInfo
+						id={data.user.id}
 						name={data.user.name}
 						userName={data.user.username}
-						avatar={`https://ui-avatars.com/api/?background=random&name=${data
-							.user.name}`}
+						avatar={`${AVATARS_API_URL}/?background=random&name=${data.user
+							.name}`}
 					/>
 					<h2 className="font-bold mt-4 mb-2">Comments:</h2>
 					<Comments id={data.id} />
