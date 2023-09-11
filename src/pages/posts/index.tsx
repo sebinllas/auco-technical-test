@@ -1,10 +1,8 @@
-import { Loading } from '@/components/Loading';
 import { PaginationControls } from '@/components/PaginationControls';
 import { Post } from '@/components/Post';
 import { useFetch } from '@/hooks/useFetch';
 import { usePagination } from '@/hooks/usePagination';
 import { PostResponse } from '@/types/PostResponse';
-import { Error } from '@/components/Error';
 import { FetchResult } from '@/components/FetchResult';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
