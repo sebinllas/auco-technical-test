@@ -4,16 +4,17 @@ import React from 'react';
 import { UserInfo } from '@/components/UserInfo';
 import { Comments } from '@/components/Comments';
 import { Loading } from '@/components/Loading';
+import { Error } from '@/components/Error';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const PostDetails = ({ id }: { id: number }) => {
-	const { data, loading, error } = useFetch<
-		PostResponse
-	>(`${API_URL}/posts/${id}?_expand=user`);
+	const { data, loading, error } = useFetch<PostResponse>(
+		`${API_URL}/posts/${id}?_expand=user`
+	);
 	const renderContent = () => {
-		if (loading) return <Loading/>;
-		if (error) return <p>Oh no something went wrong!</p>;
+		if (loading) return <Loading />;
+		if (error) return <Error />;
 		if (!data) return <p>No data</p>;
 		return (
 			<div>

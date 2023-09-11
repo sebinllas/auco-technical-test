@@ -3,6 +3,7 @@ import { CommentResponse } from '@/types/CommentResponse';
 import React from 'react';
 import { Post } from '@/components/Post';
 import { Loading } from '@/components/Loading';
+import { Error } from '@/components/Error';
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const Comments = ({ id }: { id: number }) => {
@@ -11,7 +12,7 @@ export const Comments = ({ id }: { id: number }) => {
 	);
 	const renderComments = () => {
 		if (loading) return <Loading />;
-		if (error) return <p>Oh no something went wrong!</p>;
+		if (error) return <Error />;
 		if (!data) return <p>No data</p>;
 		return (
 			<div className="flex flex-col gap-4">

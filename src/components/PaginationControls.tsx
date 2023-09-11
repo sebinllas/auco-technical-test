@@ -1,3 +1,5 @@
+import { Button } from "@/components/Button";
+
 interface PaginationControlsProps {
 	page: number;
 	limit: number;
@@ -20,19 +22,17 @@ export const PaginationControls = ({
 	return (
 		<div className="flex flex-col gap-4 justify-center items-center">
 			<div className="flex items-center gap-4">
-				<button
-					className="bg-slate-700 text-white p-2 rounded-lg disabled:opacity-50 w-10"
+				<Button
 					onClick={onPrevPage}
 					disabled={page <= 1}>
 					⬅️
-				</button>
+				</Button>
 				{page} / {Math.ceil(totalPosts / limit)}
-				<button
-					className="bg-slate-700 text-white p-2 rounded-lg disabled:opacity-50 w-10"
+				<Button
 					onClick={onNextPage}
 					disabled={page * limit >= totalPosts}>
 					➡️
-				</button>
+				</Button>
 			</div>
 			<label htmlFor="posts-limit-input" className="flex gap-2">
 				<span>Posts per page:</span>

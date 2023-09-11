@@ -4,6 +4,7 @@ import { Post } from '@/components/Post';
 import { useFetch } from '@/hooks/useFetch';
 import { usePagination } from '@/hooks/usePagination';
 import { PostResponse } from '@/types/PostResponse';
+import { Error } from '@/components/Error';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -18,7 +19,7 @@ const Posts = () => {
 
 	const renderPosts = () => {
 		if (loading) return <Loading />;
-		if (error) return <p>Oh no something went wrong!</p>;
+		if (error) return <Error />;
 		if (!data) return <p>No data</p>;
 		return data.map(postResponse =>
 			<Post
