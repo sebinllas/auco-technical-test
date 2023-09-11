@@ -2,21 +2,17 @@ import { useFetch } from '@/hooks/useFetch';
 import { CommentResponse } from '@/types/CommentResponse';
 import React from 'react';
 import { Post } from '@/components/Post';
-import { Loading } from '@/components/Loading';
-import { Error } from '@/components/Error';
+import { FetchResult } from './FetchResult';
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const Comments = ({ id }: { id: number }) => {
 	const { data, loading, error } = useFetch<CommentResponse[]>(
 		`${API_URL}/comments?postId=${id}`
 	);
-	const renderComments = () => {
-		if (loading) return <Loading />;
-		if (error) return <Error />;
-		if (!data) return <p>No data</p>;
-		return (
+	return (
+		<FetchResult error={error} loading={loading} data={data}>
 			<div className="flex flex-col gap-4">
-				{data.map(commentResponse =>
+				{data?.map(commentResponse =>
 					<Post
 						as={'div'}
 						key={commentResponse.id}
@@ -27,11 +23,6 @@ export const Comments = ({ id }: { id: number }) => {
 					/>
 				)}
 			</div>
-		);
-	};
-	return (
-		<div>
-			{renderComments()}
-		</div>
+		</FetchResult>
 	);
 };

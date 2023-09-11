@@ -5,6 +5,7 @@ import { useFetch } from '@/hooks/useFetch';
 import { usePagination } from '@/hooks/usePagination';
 import { PostResponse } from '@/types/PostResponse';
 import { Error } from '@/components/Error';
+import { FetchResult } from '@/components/FetchResult';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -17,25 +18,20 @@ const Posts = () => {
 		? Number(headers.get('x-total-count'))
 		: Number.MAX_VALUE;
 
-	const renderPosts = () => {
-		if (loading) return <Loading />;
-		if (error) return <Error />;
-		if (!data) return <p>No data</p>;
-		return data.map(postResponse =>
-			<Post
-				key={postResponse.id}
-				id={postResponse.id}
-				title={postResponse.title}
-				description={postResponse.body}
-				writer={postResponse.user.name}
-			/>
-		);
-	};
-
 	return (
 		<div className="flex flex-col gap-4">
 			<h1 className="text-2xl font-bold">Posts</h1>
-			{renderPosts()}
+			<FetchResult error={error} loading={loading} data={data}>
+				{data?.map(postResponse =>
+					<Post
+						key={postResponse.id}
+						id={postResponse.id}
+						title={postResponse.title}
+						description={postResponse.body}
+						writer={postResponse.user.name}
+					/>
+				)}
+			</FetchResult>
 			<PaginationControls
 				page={page}
 				limit={limit}
