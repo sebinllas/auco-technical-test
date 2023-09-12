@@ -21,13 +21,11 @@ export const About = () => {
 					sistemas.udea.edu.co
 				</a>{' '}
 				🌐, estoy seguro de que puedo aportar eficazmente a los objetivos de{' '}
-				<strong>Auco</strong>. Mi pasión por aprender 📚 y trabajar en
-				soluciones prácticas que beneficien a las personas me impulsa a
-				contribuir de manera significativa a proyectos desafiantes 💪.
+				<strong>Auco</strong> 💪.
 			</p>
 
 			<p>
-				Si bien aún estoy aprendiendo sobre la cultura de <strong>Auco</strong>,
+				Si bien no logré encontrar mucha información sobre la cultura de <strong>Auco</strong>,
 				me atrae su enfoque hacia la reducción en el uso de recursos 🌱,
 				disminución de de costos operativos y mejora de los procesos de gestión
 				documental a través de soluciones electrónicas 📄➡️📱.
