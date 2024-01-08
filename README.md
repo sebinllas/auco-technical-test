@@ -18,4 +18,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deployed version
 
-Check out the [online available version](https://auco-technical-test.vercel.app) deployed on Vercel.
+Check out the [online available version](https://posts-app-sebinllas.vercel.app) deployed on Vercel.
